@@ -18,28 +18,42 @@ export type Block = {
 };
 
 export type Line = {
-  blocks: Block;
-};
-
-export type SectionType = 'chorus' | 'verse' | 'bridge' | 'tab' | 'grid';
-
-export type Section = {
-  type: SectionType;
-  title?: string;
+  blocks: Block[];
 };
 
 export type ChorusSection = {
+  title?: string;
   lines: Line[];
-} & Section;
+};
 
 export type VerseSection = {
+  title?: string;
   lines: Line[];
-} & Section;
+};
 
 export type BridgeSection = {
+  title?: string;
   lines: Line[];
-} & Section;
+};
+
+export type UnknownSection = {
+  title?: string;
+  lines: Line[];
+};
+
+export type MiscSection = {
+  title?: string;
+  lines: Line[];
+};
+
+export type Section =
+  | ({ type: 'chorus' } & ChorusSection)
+  | ({ type: 'verse' } & VerseSection)
+  | ({ type: 'bridge' } & BridgeSection)
+  | ({ type: 'misc' } & MiscSection)
+  | ({ type: 'unknown' } & UnknownSection);
 
 export type Song = {
   meta: Metadata;
+  sections: Array<Section>;
 };

@@ -2,11 +2,13 @@
   "name": "songbook-chordpro",
   "version": "0.0.1",
   "description": "Library for parsing chordpro song format",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "author": "Matej Kubinec",
   "license": "MIT",
   "private": true,
   "scripts": {
+    "build": "tsc",
     "test": "jest"
   },
   "dependencies": {
@@ -16,5 +18,8 @@
     "@types/jest": "^29.2.4",
     "jest": "^29.3.1",
     "ts-jest": "^29.0.3"
-  }
+  },
+  "files": [
+    "/dist"
+  ]
 }

@@ -6,7 +6,6 @@
   "types": "dist/index.d.ts",
   "author": "Matej Kubinec",
   "license": "MIT",
-  "private": true,
   "scripts": {
     "build": "tsc",
     "test": "jest"

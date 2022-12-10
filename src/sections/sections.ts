@@ -1,11 +1,11 @@
-import { ENVIRONMENT_DIRECTIVES } from '../constants';
+import { ENVIRONMENT_DIRECTIVES, METADATA_DIRECTIVES } from '../constants';
 import parseLines from '../lines';
-import { Line, Section } from '../types';
+import { Section } from '../types';
 import { getValueFromDirective, matchesDirective } from '../utils';
 
 export const parseSections = (content: string): Section[] => {
   const sections: Section[] = [];
-  const lines = content.split('\n');
+  const lines = removeMetadata(content.split('\n'));
 
   let current: Section = {
     type: 'unknown',
@@ -80,6 +80,13 @@ const getType = (line: string): Section['type'] => {
   }
 
   return 'unknown';
+};
+
+const removeMetadata = (lines: string[]): string[] => {
+  const directives = Object.values(METADATA_DIRECTIVES);
+  return lines.filter(
+    (line) => !directives.some((directive) => matchesDirective(directive, line))
+  );
 };
 
 const isStartDirective = (line: string): boolean =>

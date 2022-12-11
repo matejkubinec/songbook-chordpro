@@ -1,4 +1,4 @@
-name: Publish package to NPM & GitHub Packages
+name: Publish package to NPM
 on:
   push:
     tags:
@@ -21,12 +21,3 @@ jobs:
       - run: make publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
-
-      - uses: actions/setup-node@v3
-        name: Publish to Github Packages
-        with:
-          node-version: '16.x'
-          registry-url: 'https://npm.pkg.github.com'
-      - run: yarn publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

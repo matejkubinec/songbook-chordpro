@@ -1,8 +1,6 @@
 name: Publish package to GitHub Packages
 on:
   push:
-    branches:
-      - main
     tags:
       - v*
 jobs:
@@ -19,8 +17,6 @@ jobs:
         with:
           node-version: '16.x'
           registry-url: 'https://npm.pkg.github.com'
-          # Defaults to the user or organization that owns the workflow file
-          scope: '@octocat'
       - run: make publish
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

@@ -12,4 +12,4 @@ ci:
 	yarn test:ci
 
 publish: ci build
-	npm publish
+	yarn publish

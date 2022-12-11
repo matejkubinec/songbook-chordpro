@@ -1,7 +1,8 @@
 name: Publish package to GitHub Packages
 on: [pull_request]
 jobs:
-  build:
+  ci:
+    name: CI
     runs-on: ubuntu-latest
     permissions:
       contents: read

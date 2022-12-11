@@ -55,5 +55,6 @@ export type Section =
 
 export type Song = {
   meta: Metadata;
+  chords: string[];
   sections: Array<Section>;
 };

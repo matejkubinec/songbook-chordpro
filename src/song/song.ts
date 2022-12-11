@@ -1,3 +1,4 @@
+import getUsedChords from '../chords';
 import { parseMetadata } from '../metadata';
 import { parseSections } from '../sections';
 import { Song } from '../types';
@@ -5,7 +6,8 @@ import { Song } from '../types';
 const parseSong = (content: string): Song => {
   const metadata = parseMetadata(content);
   const sections = parseSections(content);
-  return { meta: metadata, sections };
+  const chords = getUsedChords(sections);
+  return { meta: metadata, sections, chords };
 };
 
 export default parseSong;

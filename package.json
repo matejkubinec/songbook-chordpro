@@ -6,12 +6,15 @@
   "types": "dist/index.d.ts",
   "author": "Matej Kubinec",
   "license": "MIT",
+  "homepage": "https://github.com/matejkubinec/songbook-chordpro#readme",
   "scripts": {
     "build": "tsc",
+    "test:watch": "jest --watchAll",
+    "test:ci": "jest",
     "test": "jest"
   },
   "dependencies": {
-    "typescript": "^4.9.3"
+    "typescript": "^4.9.4"
   },
   "devDependencies": {
     "@types/jest": "^29.2.4",

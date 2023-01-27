@@ -1,8 +1,8 @@
-import { AMAZING_GRACE } from '../testData';
+import { AMAZING_GRACE, AMAZING_GRACE_COL } from '../testData';
 import parseSong from './song';
 
 describe('Song:', () => {
-  it('parses whole song', () => {
+  it('parses song', () => {
     const song = parseSong(AMAZING_GRACE);
 
     expect(song.meta.title).toBe('Amazing Grace');
@@ -12,5 +12,12 @@ describe('Song:', () => {
 
     expect(chorus.type).toBe('chorus');
     expect(verse.type).toBe('verse');
+  });
+
+  it('parses song with chords over lyrics', () => {
+    const song = parseSong(AMAZING_GRACE_COL);
+    const expected = parseSong(AMAZING_GRACE);
+
+    expect(song).toStrictEqual(expected);
   });
 });

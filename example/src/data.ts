@@ -1,0 +1,57 @@
+export const AMAZING_GRACE_CHORDS_OVER_LYRICS = [
+  '{title: Amazing Grace}',
+  '{artist: Elvis Presley}',
+  '{meta: chords_over_lyrics true}',
+  '',
+  '{start_of_chorus}',
+  '[G]                      [C]      [G]',
+  'Amazing grace, Oh, how sweet the sound',
+  '                            [D7]',
+  'That saved a wretch like me',
+  '    [G]                [C]     [G]     ',
+  "I once was lost, but now I'm found",
+  '                [D7]  [G]',
+  'Was blind, But now I see',
+  '{end_of_chorus}',
+  '',
+  '{start_of_verse}',
+  '[G]                         [C]     [G]',
+  "When we've been there ten thousand years,",
+  '                        [D7]',
+  'Bright shinning as the sun',
+  '    [G]                  [C]         [G]',
+  "We've no less days to sing God's praise",
+  '                        [D7]  [G]',
+  'Then when, when we first begun',
+  '{end_of_verse}',
+].join('\n');
+
+export const AMAZING_GRACE_INLINE_LYRICS = [
+  '{title: Amazing Grace}',
+  '{artist: Elvis Presley}',
+  '',
+  '{start_of_chorus}',
+  '[G]Amazing grace, Oh, how sw[C]eet the s[G]ound',
+  'That saved a wretch like [D7]me',
+  "I o[G]nce was lost, but n[C]ow I'm f[G]ound",
+  'Was blind, But n[D7]ow I s[G]ee',
+  '{end_of_chorus}',
+  '',
+  '{start_of_verse}',
+  "[G]When we've been there ten th[C]ousand y[G]ears,",
+  'Bright shinning as the s[D7]un',
+  "We[G]'ve no less days to s[C]ing God's pr[G]aise",
+  'Then when, when we fi[D7]rst be[G]gun',
+  '{end_of_verse}',
+].join('\n');
+
+export default [
+  {
+    name: 'Amazing Grace - Over',
+    raw: AMAZING_GRACE_CHORDS_OVER_LYRICS,
+  },
+  {
+    name: 'Amazing Grace - Inline',
+    raw: AMAZING_GRACE_INLINE_LYRICS,
+  },
+];

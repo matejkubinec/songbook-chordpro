@@ -1,0 +1,28 @@
+#root {
+  padding: 2rem;
+}
+
+.form-input {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.song-section {
+  display: flex;
+}
+
+.song-raw {
+  flex: 1;
+}
+
+.song-converted {
+  flex: 1;
+}
+
+.divider {
+  margin-left: 15px;
+  margin-right: 15px;
+  width: 1px;
+  background-color: #000;
+}

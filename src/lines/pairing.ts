@@ -7,6 +7,10 @@ const toPairs = (labeled: LabeledLine[]): LinePair[] => {
     const previous = labeled[i - 1];
     const current = labeled[i];
 
+    if (previous.label === 'mixed') {
+      pairs.push(parseMixed(previous.line));
+    }
+
     if (previous.label === 'chord' && current?.label === 'lyric') {
       pairs.push({
         chord: previous.line,
@@ -42,6 +46,38 @@ const toPairs = (labeled: LabeledLine[]): LinePair[] => {
   }
 
   return pairs;
+};
+
+const parseMixed = (line: string): LinePair => {
+  let offset = 0;
+  let chord = '';
+  let lyric = '';
+  let isChord = false;
+
+  for (const char of line) {
+    if (char === '[') {
+      while (offset > 0) {
+        chord += ' ';
+        offset -= 1;
+      }
+
+      isChord = true;
+    }
+
+    if (isChord) {
+      chord += char;
+      offset -= 1;
+    } else {
+      lyric += char;
+      offset += 1;
+    }
+
+    if (char === ']') {
+      isChord = false;
+    }
+  }
+
+  return { chord, lyric };
 };
 
 export default toPairs;

@@ -10,7 +10,7 @@ const LineBlock: FC<Props> = ({ block }) => {
   return (
     <div className="block">
       <div className="chord">{block.chord}</div>
-      <div>{block.lyric}</div>
+      <div className="lyric">{block.lyric || ' '}</div>
     </div>
   );
 };

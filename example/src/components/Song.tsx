@@ -7,7 +7,6 @@ type Props = {
 };
 
 const Song: FC<Props> = ({ song }) => {
-  console.log(song);
   return (
     <div>
       <h3>{song.meta.title}</h3>

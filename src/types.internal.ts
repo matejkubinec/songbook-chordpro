@@ -1,4 +1,4 @@
-export type LineLabel = 'chord' | 'lyric';
+export type LineLabel = 'chord' | 'lyric' | 'mixed';
 
 export type LabeledLine = {
   label: LineLabel;

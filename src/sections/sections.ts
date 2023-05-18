@@ -93,10 +93,12 @@ const isStartDirective = (line: string): boolean =>
   matchesDirective(ENVIRONMENT_DIRECTIVES.VerseStart, line) ||
   matchesDirective(ENVIRONMENT_DIRECTIVES.ChorusStart, line) ||
   matchesDirective(ENVIRONMENT_DIRECTIVES.BridgeStart, line) ||
-  matchesDirective(ENVIRONMENT_DIRECTIVES.SectionStart, line);
+  matchesDirective(ENVIRONMENT_DIRECTIVES.SectionStart, line) ||
+  line.includes('{start_of_');
 
 const isEndDirective = (line: string): boolean =>
   matchesDirective(ENVIRONMENT_DIRECTIVES.VerseEnd, line) ||
   matchesDirective(ENVIRONMENT_DIRECTIVES.ChorusEnd, line) ||
   matchesDirective(ENVIRONMENT_DIRECTIVES.BridgeEnd, line) ||
-  matchesDirective(ENVIRONMENT_DIRECTIVES.SectionEnd, line);
+  matchesDirective(ENVIRONMENT_DIRECTIVES.SectionEnd, line) ||
+  line.includes('{end_of_');

@@ -197,4 +197,16 @@ describe('Sections:', () => {
     expect(misc.title).toBe('Misc');
     expect(misc.lines).toEqual(expectedLines.misc);
   });
+
+  it('parses non specific section', () => {
+    const sections = parseSections(TestData.introMinimal);
+
+    expect(sections.length).toBe(1);
+
+    expect(sections[0].title).toBe('Intro');
+    expect(sections[0].lines).toHaveLength(1);
+    expect(sections[0].lines[0].blocks).toHaveLength(1);
+    expect(sections[0].lines[0].blocks[0].chord).toBe('');
+    expect(sections[0].lines[0].blocks[0].lyric).toBe('Intro content');
+  });
 });

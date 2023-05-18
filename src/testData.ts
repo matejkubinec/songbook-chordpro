@@ -106,3 +106,9 @@ We've no less days to sing God's praise
 Then when, when we first begun
 {end_of_verse}
 `.trim();
+
+export const introMinimal = `
+{start_of_intro: Intro}
+Intro content
+{end_of_intro}
+`.trim();

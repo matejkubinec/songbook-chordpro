@@ -1,9 +1,10 @@
-import { LabeledLine, LineLabel, LinePair } from '../types.internal';
+import { LabeledLine, LinePair } from '../types.internal';
 import toPairs from './pairing';
 
 const data = {
   chord: '[Ami]',
   lyric: 'Lyric',
+  pad: '     ',
 };
 
 describe('LinePairing:', () => {
@@ -21,11 +22,11 @@ describe('LinePairing:', () => {
     const expected: LinePair[] = [
       {
         chord: data.chord,
-        lyric: '',
+        lyric: data.pad,
       },
       {
         chord: data.chord,
-        lyric: '',
+        lyric: data.pad,
       },
     ];
     expect(toPairs(labeled)).toEqual(expected);
@@ -93,7 +94,7 @@ describe('LinePairing:', () => {
       },
       {
         chord: data.chord,
-        lyric: '',
+        lyric: data.pad,
       },
     ];
     expect(toPairs(labeled)).toEqual(expected);
@@ -145,7 +146,7 @@ describe('LinePairing:', () => {
     const expected: LinePair[] = [
       {
         chord: data.chord,
-        lyric: '',
+        lyric: data.pad,
       },
       {
         chord: data.chord,
@@ -182,7 +183,7 @@ describe('LinePairing:', () => {
     const expected: LinePair[] = [
       {
         chord: '                         [D7]',
-        lyric: 'That saved a wretch like me',
+        lyric: 'That saved a wretch like me  ',
       },
     ];
     const actual = toPairs(input);
@@ -207,7 +208,7 @@ describe('LinePairing:', () => {
       },
       {
         chord: '                         [D7]',
-        lyric: 'That saved a wretch like me',
+        lyric: 'That saved a wretch like me  ',
       },
     ];
     const actual = toPairs(input);

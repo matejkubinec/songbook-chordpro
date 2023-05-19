@@ -89,7 +89,7 @@ export const AMAZING_GRACE_COL = `
 Amazing grace, Oh, how sweet the sound
                          [D7]
 That saved a wretch like me
-   [G]                [C]     [G]     
+   [G]                [C]     [G]
 I once was lost, but now I'm found
                 [D7]  [G]
 Was blind, But now I see

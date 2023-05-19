@@ -3,7 +3,9 @@ import parseLines from './lines';
 
 const data = {
   chord: '[Ami]',
+  chordParsed: 'Ami',
   lyric: 'Lyric',
+  pad: '     ',
 };
 
 describe('Lines:', () => {
@@ -18,7 +20,7 @@ describe('Lines:', () => {
 
   it('parses chord only lines', () => {
     const lines = [data.chord, data.chord, data.chord];
-    const block: Block = { lyric: '', chord: 'Ami' };
+    const block: Block = { lyric: data.pad, chord: data.chordParsed };
     const line: Line = { blocks: [block], type: 'chords-only' };
     const expected: Line[] = [line, line, line];
     const actual = parseLines(lines);
@@ -27,7 +29,7 @@ describe('Lines:', () => {
 
   it('parses mixed lines', () => {
     const lines = [data.chord, data.lyric, data.chord, data.lyric];
-    const block: Block = { lyric: data.lyric, chord: 'Ami' };
+    const block: Block = { lyric: data.lyric, chord: data.chordParsed };
     const line: Line = { blocks: [block], type: 'mixed' };
     const expected: Line[] = [line, line];
     const actual = parseLines(lines);

@@ -45,7 +45,10 @@ const toPairs = (labeled: LabeledLine[]): LinePair[] => {
     }
   }
 
-  return pairs;
+  return pairs.map((pair) => ({
+    chord: pair.chord.trimEnd(),
+    lyric: normalizeLyric(pair.lyric, pair.chord.trimEnd()),
+  }));
 };
 
 const parseMixed = (line: string): LinePair => {
@@ -79,5 +82,8 @@ const parseMixed = (line: string): LinePair => {
 
   return { chord, lyric };
 };
+
+const normalizeLyric = (lyric: string, chord: string): string =>
+  lyric.padEnd(chord.length, ' ');
 
 export default toPairs;

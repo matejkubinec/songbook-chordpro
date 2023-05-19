@@ -1,4 +1,5 @@
-import { getValueFromDirective, matchesDirective } from './utils';
+import { Block } from '../types';
+import { blocksToType, getValueFromDirective, matchesDirective } from './utils';
 
 describe('Utils:', () => {
   it('extracts value from directive - empty', () => {
@@ -26,5 +27,29 @@ describe('Utils:', () => {
   it('matches directive with value', () => {
     expect(matchesDirective('title|Title', '{title:value}')).toBeTruthy();
     expect(matchesDirective('title|Title', '{Title:value}')).toBeTruthy();
+  });
+
+  it('get type from chords only blocks', () => {
+    const blocks: Block[] = [
+      { chord: 'Ami', lyric: '' },
+      { chord: 'D', lyric: '' },
+    ];
+    expect(blocksToType(blocks)).toBe('chords-only');
+  });
+
+  it('get type from lyrics only blocks', () => {
+    const blocks: Block[] = [
+      { chord: '', lyric: 'Lyric' },
+      { chord: '', lyric: 'Lyric' },
+    ];
+    expect(blocksToType(blocks)).toBe('lyrics-only');
+  });
+
+  it('get type from mixed blocks', () => {
+    const blocks: Block[] = [
+      { chord: '', lyric: 'Lyric' },
+      { chord: 'Ami', lyric: 'Lyric' },
+    ];
+    expect(blocksToType(blocks)).toBe('mixed');
   });
 });

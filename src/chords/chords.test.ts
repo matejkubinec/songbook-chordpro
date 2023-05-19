@@ -9,7 +9,7 @@ describe('Chords:', () => {
     };
     const section: Section = {
       type: 'verse',
-      lines: [{ blocks: [block] }],
+      lines: [{ blocks: [block], type: 'chords-only' }],
     };
     const expected = ['C'];
     const actual = getUsedChords([section]);
@@ -23,7 +23,7 @@ describe('Chords:', () => {
     };
     const section: Section = {
       type: 'verse',
-      lines: [{ blocks: [block] }],
+      lines: [{ blocks: [block], type: 'chords-only' }],
     };
     const expected = ['C'];
     const actual = getUsedChords([section, section]);
@@ -41,7 +41,7 @@ describe('Chords:', () => {
     };
     const section: Section = {
       type: 'verse',
-      lines: [{ blocks: [blockC, blockD] }],
+      lines: [{ blocks: [blockC, blockD], type: 'chords-only' }],
     };
     const expected = ['C', 'Dmi'];
     const actual = getUsedChords([section]);

@@ -1,5 +1,6 @@
 import * as TestData from '../testData';
 import { Block, Line, Section } from '../types';
+import { blocksToType } from '../utils';
 import { parseSections } from './sections';
 
 describe('Sections:', () => {
@@ -12,6 +13,7 @@ describe('Sections:', () => {
             lyric: 'This is a verse',
           },
         ],
+        type: 'lyrics-only',
       },
     ];
 
@@ -33,6 +35,7 @@ describe('Sections:', () => {
             lyric: 'This is a verse',
           },
         ],
+        type: 'lyrics-only',
       },
     ];
 
@@ -48,6 +51,7 @@ describe('Sections:', () => {
   it('parses verse with chords', () => {
     const expectedLines: Line[] = [
       {
+        type: 'mixed',
         blocks: [
           {
             chord: 'Ami',
@@ -100,6 +104,7 @@ describe('Sections:', () => {
     const expectedLines: Line[] = [
       {
         blocks: blocks,
+        type: blocksToType(blocks),
       },
     ];
 
@@ -152,26 +157,31 @@ describe('Sections:', () => {
       verse: [
         {
           blocks: blocks.verse,
+          type: blocksToType(blocks.verse),
         },
       ],
       bridge: [
         {
           blocks: blocks.bridge,
+          type: blocksToType(blocks.bridge),
         },
       ],
       chorus: [
         {
           blocks: blocks.chorus,
+          type: blocksToType(blocks.chorus),
         },
       ],
       unknown: [
         {
           blocks: blocks.unknown,
+          type: blocksToType(blocks.unknown),
         },
       ],
       misc: [
         {
           blocks: blocks.misc,
+          type: blocksToType(blocks.misc),
         },
       ],
     };

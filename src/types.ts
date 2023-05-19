@@ -17,8 +17,11 @@ export type Block = {
   lyric: string;
 };
 
+export type LineType = 'mixed' | 'lyrics-only' | 'chords-only';
+
 export type Line = {
   blocks: Block[];
+  type: LineType;
 };
 
 export type ChorusSection = {

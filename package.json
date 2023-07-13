@@ -1,6 +1,6 @@
 {
   "name": "songbook-chordpro",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Library for parsing chordpro song format",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",

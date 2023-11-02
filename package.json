@@ -14,12 +14,12 @@
     "test": "jest"
   },
   "dependencies": {
-    "typescript": "^5.1.6"
+    "typescript": "^5.2.2"
   },
   "devDependencies": {
-    "@types/jest": "^29.4.0",
-    "jest": "^29.4.1",
-    "ts-jest": "^29.0.5"
+    "@types/jest": "^29.5.7",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.1"
   },
   "files": [
     "/dist"

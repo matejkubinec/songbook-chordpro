@@ -20,4 +20,12 @@ describe('Metadata:', () => {
     expect(parseMetadata('{artist: value:value}').artist).toBe('value:value');
     expect(parseMetadata('{Artist: value:value}').artist).toBe('value:value');
   });
+
+  it('should parse capo with value', () => {
+    expect(parseMetadata('{capo}').capo).toBeUndefined();
+  });
+
+  it('should parse capo with value', () => {
+    expect(parseMetadata('{capo: 1}').capo).toBe('1');
+  });
 });

@@ -1,5 +1,13 @@
 name: CI
-on: [pull_request]
+
+on:
+  pull_request:
+    branches:
+      - main
+  push:
+    branches:
+      - main
+
 jobs:
   ci:
     name: CI
@@ -9,7 +17,7 @@ jobs:
       packages: write
     steps:
       - uses: actions/checkout@v3
-      
+
       - uses: pnpm/action-setup@v4
         with:
           version: 10

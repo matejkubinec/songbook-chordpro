@@ -1,15 +1,15 @@
 install:
-	yarn install
+	pnpm install
 
 test:
-	yarn test
+	pnpm test
 
 build:
-	yarn build
+	pnpm build
 
 ci:
-	yarn install --frozen-lockfile 
-	yarn test:ci
+	pnpm install --frozen-lockfile 
+	pnpm test:ci
 
 publish: ci build
-	yarn publish
+	pnpm publish

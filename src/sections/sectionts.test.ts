@@ -3,6 +3,17 @@ import { Block, Line, Section } from '../types';
 import { blocksToType } from '../utils';
 import { parseSections } from './sections';
 
+type LineSection = Extract<Section, { lines: Line[] }>;
+
+const parseLineSections = (content: string): LineSection[] =>
+  parseSections(content).map((section) => {
+    if (!('lines' in section)) {
+      throw new Error('Expected line section');
+    }
+
+    return section;
+  });
+
 describe('Sections:', () => {
   it('parses verse without chords and titles', () => {
     const expectedLines: Line[] = [
@@ -17,7 +28,7 @@ describe('Sections:', () => {
       },
     ];
 
-    const parsedLong = parseSections(TestData.verseMinimal);
+    const parsedLong = parseLineSections(TestData.verseMinimal);
 
     expect(parsedLong.length).toBe(1);
     expect(parsedLong[0]).toBeDefined();
@@ -39,7 +50,7 @@ describe('Sections:', () => {
       },
     ];
 
-    const parsedLong = parseSections(TestData.verseTitle);
+    const parsedLong = parseLineSections(TestData.verseTitle);
 
     expect(parsedLong.length).toBe(1);
     expect(parsedLong[0]).toBeDefined();
@@ -73,7 +84,7 @@ describe('Sections:', () => {
       },
     ];
 
-    const parsedLong = parseSections(TestData.verseChords);
+    const parsedLong = parseLineSections(TestData.verseChords);
 
     expect(parsedLong.length).toBe(1);
     expect(parsedLong[0]).toBeDefined();
@@ -108,7 +119,7 @@ describe('Sections:', () => {
       },
     ];
 
-    const parsedLong = parseSections(TestData.multiSections);
+    const parsedLong = parseLineSections(TestData.multiSections);
 
     expect(parsedLong.length).toBe(3);
 
@@ -121,7 +132,8 @@ describe('Sections:', () => {
   });
 
   it('parses different section types', () => {
-    const blocks: Record<Section['type'], Block[]> = {
+    type LineSectionType = Exclude<Section['type'], 'grid'>;
+    const blocks: Record<LineSectionType, Block[]> = {
       verse: [
         {
           chord: '',
@@ -153,7 +165,7 @@ describe('Sections:', () => {
         },
       ],
     };
-    const expectedLines: Record<Section['type'], Line[]> = {
+    const expectedLines: Record<LineSectionType, Line[]> = {
       verse: [
         {
           blocks: blocks.verse,
@@ -186,7 +198,7 @@ describe('Sections:', () => {
       ],
     };
 
-    const sections = parseSections(TestData.multiTypes);
+    const sections = parseLineSections(TestData.multiTypes);
 
     expect(sections.length).toBe(5);
 
@@ -209,7 +221,7 @@ describe('Sections:', () => {
   });
 
   it('parses non specific section', () => {
-    const sections = parseSections(TestData.introMinimal);
+    const sections = parseLineSections(TestData.introMinimal);
 
     expect(sections.length).toBe(1);
 

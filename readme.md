@@ -32,6 +32,42 @@ const content = '...chordpro string';
 const song = parseSong(content);
 ```
 
+### Grid sections
+
+ChordPro grid environments are parsed as `grid` sections with tokenized rows:
+
+```ts
+import parseSong from 'songbook-chordpro';
+
+const song = parseSong(`
+{start_of_grid: Intro}
+| C . . . | G . . . |
+{end_of_grid}
+`.trim());
+
+const grid = song.sections[0];
+
+if (grid.type === 'grid') {
+  console.log(grid.label);
+  // Intro
+
+  console.log(grid.rows[0].tokens);
+  // [
+  //   { type: 'bar', symbol: '|' },
+  //   { type: 'chord', chord: 'C' },
+  //   { type: 'space', symbol: '.' },
+  //   { type: 'space', symbol: '.' },
+  //   { type: 'space', symbol: '.' },
+  //   { type: 'bar', symbol: '|' },
+  //   { type: 'chord', chord: 'G' },
+  //   { type: 'space', symbol: '.' },
+  //   { type: 'space', symbol: '.' },
+  //   { type: 'space', symbol: '.' },
+  //   { type: 'bar', symbol: '|' },
+  // ]
+}
+```
+
 ## License
 
 [MIT](./license.txt)

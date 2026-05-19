@@ -20,4 +20,14 @@ describe('Song:', () => {
 
     expect(song).toStrictEqual(expected);
   });
+
+  it('lists clean chords from grid sections', () => {
+    const song = parseSong(`
+{start_of_grid}
+| C . / | % . | D~G . ||
+{end_of_grid}
+`.trim());
+
+    expect(song.chords).toEqual(['C', 'D', 'G']);
+  });
 });

@@ -24,4 +24,7 @@ export enum ENVIRONMENT_DIRECTIVES {
 
   SectionStart = 'start_of_section|sos',
   SectionEnd = 'end_of_section|eos',
+
+  GridStart = 'start_of_grid|sog',
+  GridEnd = 'end_of_grid|eog',
 }
